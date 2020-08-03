@@ -1,0 +1,43 @@
+<th:block th:fragment="navbarLogged">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Messages</a>
+        </li>
+        <li class="nav-item dropdown ml-md-auto">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+               data-toggle="dropdown"
+               th:text="${user} ? ${user.firstName+' ' + user.lastName}: 'Test User'">Adam Nowak</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/login">Login</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <div class="dropdown-divider">
+                </div>
+                <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </li>
+    </ul>
+</th:block>
+<th:block th:fragment="navbarNotLogged">
+    <ul class="nav nav-tabs bg-dark ">
+        <li class="nav-item">
+            <a class="nav-link active" href="">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Messages</a>
+        </li>
+        <li class="nav-item navbar-right ml-md-auto">
+            <li><a class="nav-link bg-warning border-right-1" href="/signup"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+            <li><a class="nav-link bg-warning" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        </li>
+    </ul>
+</th:block>

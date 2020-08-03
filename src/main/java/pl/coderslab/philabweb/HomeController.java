@@ -11,8 +11,12 @@ public class HomeController {
     public String indexPage(){
         return "index";
     }
-    @GetMapping("/logins")
+    @GetMapping("/login")
     public String loginIntoApp(){
         return "login";
+    }
+    @GetMapping("/signup")
+    public String registerIntoApp(){
+        return "register";
     }
 }
