@@ -8,10 +8,8 @@
 # Access
 - Aplication is avaiable after registrtion
 - Temporary roles are: ADMIN or USER.
-| role  | login | pass  |
-| ----- |:-----:| -----:|
-| ADMIN | admin | admin |
-| USER  | user  | user  |
+ -u admin -p admin
+ -u user -p user
 # Technologies
 *Spring boot
 *Spring security
