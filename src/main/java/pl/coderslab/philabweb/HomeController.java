@@ -8,15 +8,22 @@ import pl.coderslab.philabweb.entities.User;
 @Controller
 public class HomeController {
     @GetMapping("")
-    public String indexPage(){
+    public String indexPage() {
         return "index";
     }
+
     @GetMapping("/login")
-    public String loginIntoApp(){
+    public String loginIntoApp() {
+        for (int i = 0; i < 1; i++) {
+            if (i % 3 == 0) {
+            }
+        }
+
         return "login";
     }
+
     @GetMapping("/signup")
-    public String registerIntoApp(){
+    public String registerIntoApp() {
         return "register";
     }
 }
