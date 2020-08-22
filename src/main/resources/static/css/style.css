@@ -1,1 +1,10 @@
 /*# Empty CSS file for your own CSS*/
+.cropped {
+    height: 40vh;
+    object-fit: cover;
+    object-position: 50% 35%;
+}
+.center-table {
+    margin-left:auto;
+    margin-right:auto;
+}
