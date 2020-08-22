@@ -1,8 +1,13 @@
 package pl.coderslab.philabweb.entities;
 
+import org.hibernate.validator.constraints.pl.PESEL;
+
 import javax.persistence.*;
+import javax.validation.constraints.Past;
+import java.time.LocalDate;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +16,14 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
+    @Past
+    private LocalDate birthDate;
+    private int genderId;
+    private String placeOfResidence;
+    @PESEL
+    private long pesel;
+    private long licenceNumber;
+    private String typeOfDegree;
 
     public User() {
     }
