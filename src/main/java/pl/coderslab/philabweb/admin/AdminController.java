@@ -1,4 +1,4 @@
-package pl.coderslab.philabweb.Admin;
+package pl.coderslab.philabweb.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -32,23 +32,42 @@
                         </div>
                         <div class="col-md-6">
                             <form th:action="@{/login}" method="post" role="form">
-                                <div class="form-group">
+                                <div class="form-group align-content-center">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <label for="username">
+                                                    User Name:
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <input id="username" type="text" name="username"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="password">
+                                                    Password: <br>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <input id="password" type="password" name="password"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
 
-                                    <label for="username">
-                                        User Name:<br>
-                                    </label>
-                                    <input id="username" type="text" name="username"/>
-                                </div>
-                                <div class="form-group">
+                                            </td>
+                                            <td class ="float-right">
+                                                <button type="submit" class="btn btn-primary">
+                                                    Submit
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
 
-                                    <label for="password">
-                                        Password: <br>
-                                    </label>
-                                    <input id="password" type="password" name="password" />
+
                                 </div>
-                                <button type="submit" class="btn btn-primary">
-                                    Submit
-                                </button>
                             </form>
                         </div>
                         <div class="col-md-3">

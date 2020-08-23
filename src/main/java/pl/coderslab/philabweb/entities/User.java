@@ -1,43 +1,38 @@
 package pl.coderslab.philabweb.entities;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
 public class User {
-    private int id;
-    private String firstName;
-    private String lastName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String userName;
+    private String email;
+    private String password;
+    @Embedded
+    private UserDetails userDetails;
+    @OneToMany
+    private List<UserGroup> userGroup;
 
     public User() {
     }
 
-    public User(int id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public User setId(int id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public User setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public User setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userDetails=" + userDetails +
+                '}';
     }
 }
