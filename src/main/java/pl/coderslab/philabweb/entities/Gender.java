@@ -4,8 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class BodyParts {
+public class Gender {
     @Id
     private Long id;
-    private String bodyPartName;
+    private String name;
 }

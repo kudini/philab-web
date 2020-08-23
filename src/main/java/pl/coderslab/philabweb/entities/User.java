@@ -1,75 +1,38 @@
 package pl.coderslab.philabweb.entities;
 
-import org.hibernate.validator.constraints.pl.PESEL;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Past;
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String userName;
     private String email;
     private String password;
-    private String firstName;
-    private String lastName;
-    @Past
-    private LocalDate birthDate;
-    private int genderId;
-    private String placeOfResidence;
-    @PESEL
-    private long pesel;
-    private long licenceNumber;
-    private String typeOfDegree;
+    @Embedded
+    private UserDetails userDetails;
+    @OneToMany
+    private List<UserGroup> userGroup;
 
     public User() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public User setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public User setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
-        return this;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public User setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public User setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userDetails=" + userDetails +
+                '}';
     }
 }
