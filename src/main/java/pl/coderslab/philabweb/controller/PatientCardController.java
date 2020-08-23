@@ -29,7 +29,7 @@ public class PatientCardController {
         model.addAttribute("patientList",patientCardService.findAllPatientCardsByHealthProfessionUser(userService.findUserbyId(medicId)));
        return "patientlist";
     }
-    @GetMapping("/medic/patient/add")
+    @GetMapping("/medic/patient/card/add")
     public String patientCardAddGet(){
         return "patientCardAdd";
     }

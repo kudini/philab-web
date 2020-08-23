@@ -31,6 +31,7 @@ public class HomeController {
 
     @GetMapping("/signup")
     public String registerIntoApp() {
+        //todo implement post method adding user into database
         return "register";
     }
 }

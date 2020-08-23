@@ -40,6 +40,11 @@
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.17.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.21</version>
+        </dependency>
         <!--addPeople swagger ?-->
         <dependency>
             <groupId>io.springfox</groupId>

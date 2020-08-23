@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Phillab Site">
     <meta name="author" content="Jerzy Pałka">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
     <title>PhilLab</title>
     <!-- Bootstrap and core site CSS -->
     <th:block th:include="_other :: stylesDev"/>
@@ -22,7 +21,7 @@
                     <h3 class="masthead-brand"><a class="nav-link active" href="/">Phillab</a></h3>
                     <nav class="nav nav-masthead justify-content-center px-3">
                         <a class="nav-link active" href="/aboutus">About Us</a>
-                        <a class="nav-link active" href="/profile/{id}">Profile(docelowo imie nazwisko)</a>
+                        <a class="nav-link active" href="/profile/{id}">Andrew Bonnet</a>
                         <a class="nav-link active" href="/visits">Visits</a>
                         <a class="nav-link active" href="/logout">Logout</a>
                     </nav>
@@ -37,30 +36,50 @@
         </div>
         <div class="col-6">
             <form method="post">
-                <label for="dateofvisit">
-                    Date of visit:
-                </label>
-                <input id="dateofvisit" type="date" name="dateofvisit"/>
-                <label for="timeofvisit">
-                    Time of visit:
-                </label>
-                <input id="timeofvisit" type="time" name="timeofvisit"/>
-                <label for="characteroftheailment">
-                    Character of the Ailment:
-                </label>
-                <input id="characteroftheailment" type="textarea" name="characteroftheailment"/>
-                <label for="localizationofpain">
-                    Localization of pain:
-                </label>
-                <input id="localizationofpain" type="textare" name="localizationofpain"/>
-                <label for="strengthofpain">
-                    Strength of pain:
-                </label>
-                <input id="strengthofpain" type="textarea" name="strengthofpain"/>
-                <label for="deformationsofbody">
-                    Deformations of body:
-                </label>
-                <input id="deformationsofbody" type="textarea" name="deformationsofbody"/>
+                    <div class="form-group inline-flex">
+                        <label for="dateofvisit">
+                            Date of visit:
+                        </label>
+                        <input id="dateofvisit" type="date" name="dateofvisit"/>
+                    </div>
+                    <div class="form-group inline-flex">
+                        <label for="timeofvisit">
+                            Time of visit:
+                        </label>
+                        <input id="timeofvisit" type="time" name="timeofvisit"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="characteroftheailment">
+                            Character of the Ailment:
+                        </label>
+                        <textarea id="characteroftheailment" rows="10"  name="characteroftheailment">
+                    </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="localizationofpain">
+                            Localization of pain:
+                        </label>
+                        <textarea id="localizationofpain" rows="10"  name="localizationofpain">
+                    </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="strengthofpain">
+                            Strength of pain:
+                        </label>
+                        <textarea id="strengthofpain" rows="10" name="strengthofpain">
+                    </textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deformationsofbody">
+                            Deformations of body:
+                        </label>
+                        <textarea id="deformationsofbody" rows="10"  name="deformationsofbody">
+                    </textarea>
+                    </div>
             </form>
         </div>
         <div class="col-3">
