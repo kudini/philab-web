@@ -23,17 +23,17 @@ public class MedicController {
     @GetMapping("/medic/{medicId}/patients")
     public String patientsCardsByMedic(@PathVariable Long medicId, Model model){
         model.addAttribute("patientList",patientCardService.findAllPatientCardsByHealthProfessionUser(userService.findUserbyId(medicId)));
-       return "patientlist";
+       return "patient/patientlist";
     }
 
 
     @GetMapping("/medic/patient/card/add")
     public String patientCardAddGet(){
-        return "patientCardAdd";
+        return "medic/patientCardAdd";
     }
     @PostMapping("/medic/patient/card/add")
     public String patientCardAddPost(){
-        return "patientCardAdd";
+        return "medic/patientCardAdd";
     }
 
 
