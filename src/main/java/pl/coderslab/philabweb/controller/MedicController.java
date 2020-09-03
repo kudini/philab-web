@@ -10,31 +10,37 @@ import pl.coderslab.philabweb.service.PatientCardService;
 import pl.coderslab.philabweb.service.UserService;
 
 @Controller
-public class PatientCardController {
+public class MedicController {
     PatientCardService patientCardService;
     UserService userService;
 
-    public PatientCardController(PatientCardService patientCardService, UserService userService) {
+    public MedicController(PatientCardService patientCardService, UserService userService) {
         this.patientCardService = patientCardService;
         this.userService = userService;
     }
 
-    @GetMapping("/all/patient-card/{userId}")
-    @ResponseBody //todo zaedytowac to zeby przekazywalo model do sesji
-    public String findAllPatientCard(@PathVariable Long userId){
-       return patientCardService.findAllPatientCardsByHealthProfessionUser(userService.findUserbyId(userId)).toString();
-    }
+
     @GetMapping("/medic/{medicId}/patients")
     public String patientsCardsByMedic(@PathVariable Long medicId, Model model){
         model.addAttribute("patientList",patientCardService.findAllPatientCardsByHealthProfessionUser(userService.findUserbyId(medicId)));
        return "patientlist";
     }
+
+
     @GetMapping("/medic/patient/card/add")
     public String patientCardAddGet(){
         return "patientCardAdd";
     }
-    @PostMapping("/medic/patient/add")
+    @PostMapping("/medic/patient/card/add")
     public String patientCardAddPost(){
         return "patientCardAdd";
+    }
+
+
+    @GetMapping("/medic/patient/cards")
+    @ResponseBody //stworzyc widok
+    public String findAllPatientCard(@PathVariable Long userId, Model model){
+        model.addAttribute("patientCards",patientCardService.findAllPatientCardsByHealthProfessionUser(userService.findUserbyId(userId)));
+        return "view";
     }
 }

@@ -13,78 +13,65 @@
 <body>
 
 <div class="container-fluid pt-0 h-100 px-3 pb-3 mx-auto flex-column">
-    <div class="row navbar-background-color">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <header class="masthead  mb-auto w-100 navbar-background-color">
-                <div class="inner">
-                    <h3 class="masthead-brand"><a class="nav-link active" href="/">Phillab</a></h3>
-                    <nav class="nav nav-masthead justify-content-center px-3">
-                        <a class="nav-link active" href="/aboutus">About Us</a>
-                        <a class="nav-link active" href="/profile/{id}">Andrew Bonnet</a>
-                        <a class="nav-link active" href="/visits">Visits</a>
-                        <a class="nav-link active" href="/logout">Logout</a>
-                    </nav>
-                </div>
-            </header>
-        </div>
-        <div class="col-3"></div>
-
-    </div>
+    <th:block th:include="_menu :: navbarLogged"/>
     <main class="row ">
-        <div class="col-3">
+        <div class="col-2">
         </div>
-        <div class="col-6">
-            <form method="post">
-                    <div class="form-group inline-flex">
-                        <label for="dateofvisit">
-                            Date of visit:
-                        </label>
-                        <input id="dateofvisit" type="date" name="dateofvisit"/>
+        <div class="col-8">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputDate">Date:</label>
+                        <input type="date" class="form-control" id="inputDate">
                     </div>
-                    <div class="form-group inline-flex">
-                        <label for="timeofvisit">
-                            Time of visit:
-                        </label>
-                        <input id="timeofvisit" type="time" name="timeofvisit"/>
+                    <div class="form-group col-md-3">
+                        <label for="inputTime">Time:</label>
+                        <input type="time" class="form-control" id="inputTime">
                     </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputFirst">First Name:</label>
+                        <input type="text" class="form-control" id="inputFirst">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputLast">Last Name:</label>
+                        <input type="text" class="form-control" id="inputLast">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="inputCharOfTheAilment">Character of the ailment:</label>
+                        <input type="text" class="form-control" id="inputCharOfTheAilment" placeholder="1234 Main St">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPesel">Pesel:</label>
+                        <input type="text" class="form-control" id="inputPesel" minlength="11" maxlength="11" placeholder="22010301000">
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="characteroftheailment">
-                            Character of the Ailment:
-                        </label>
-                        <textarea id="characteroftheailment" rows="10"  name="characteroftheailment">
-                    </textarea>
+                <div class="form-group">
+                    <label for="inputLocalization">Localization of pain:</label>
+                    <input type="text" class="form-control" id="inputLocalization"
+                           placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputPain">Strength of pain:</label>
+                        <input type="text" class="form-control" id="inputPain">
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputDeformations">Deformations of body:</label>
+                        <input type="text" class="form-control" id="inputDeformations">
 
-                    <div class="form-group">
-                        <label for="localizationofpain">
-                            Localization of pain:
-                        </label>
-                        <textarea id="localizationofpain" rows="10"  name="localizationofpain">
-                    </textarea>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="strengthofpain">
-                            Strength of pain:
-                        </label>
-                        <textarea id="strengthofpain" rows="10" name="strengthofpain">
-                    </textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="deformationsofbody">
-                            Deformations of body:
-                        </label>
-                        <textarea id="deformationsofbody" rows="10"  name="deformationsofbody">
-                    </textarea>
-                    </div>
+                <button type="submit" class="btn btn-primary">Add Card</button>
             </form>
         </div>
-        <div class="col-3">
+        <div class="col-2">
         </div>
     </main>
 </div>
+<th:block th:include="_other :: pluginsDev"/>
 </body>
 </html>

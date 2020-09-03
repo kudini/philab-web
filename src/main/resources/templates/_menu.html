@@ -1,43 +1,74 @@
 <th:block th:fragment="navbarLogged">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Messages</a>
-        </li>
-        <li class="nav-item dropdown ml-md-auto">
-            <a class="nav-link dropdown-toggle" href="/user/profile" id="navbarDropdownMenuLink"
-               data-toggle="dropdown"
-               th:text="${user} ? ${user.firstName+' ' + user.lastName}: 'Test User'">Adam Nowak</a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/login">Login</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider">
+    <div class="row py-3 navbar-background-color">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <header class="masthead  mb-auto w-100 navbar-background-color">
+                <div class="inner">
+                    <h3 class="masthead-brand"><a class="nav-link active" href="/">Phillab</a></h3>
+                    <nav class="nav nav-masthead justify-content-center px-3">
+<!--todo medyk ma sie pojawiac tylko jak posiada role medic pozatym zmienic na dynamicznie generowane id tymczasowo na sztywno-->
+                        <a class="nav-link active" href="/visits">History</a>
+                        <div class="dropdown show">
+                            <a class="nav-link active dropdown-toggle mx-3" href="/medic" role="button" id="medicMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Medic
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="medicMenuLink">
+                                <a class="dropdown-item" href="/medic/patient/add">Add Patient</a>
+                                <a class="dropdown-item" href="/medic/1/patients">My Patients</a>
+                                <a class="dropdown-item" href="/medic/patient/card/add">New Card</a>
+                                <a class="dropdown-item" href="/medic/patient/card/list">All Visits</a>
+                            </div>
+                        </div>
+                        <div class="dropdown show">
+                            <a class="nav-link active dropdown-toggle mx-3" href="/visits" role="button" id="visitMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Visits
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="visitMenuLink">
+                                <a class="dropdown-item" href="/add">Reservation</a>
+                                <a class="dropdown-item" href="/visits">Scheduled</a>
+                                <a class="dropdown-item" href="/patient/{userid}/history">History</a>
+                            </div>
+                        </div>
+                        <a class="nav-link active" href="/aboutus">About Us</a>
+                        <div class="dropdown show">
+                            <a class="nav-link active dropdown-toggle mx-3" href="/profile" role="button" id="profileMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${#authentication.name}">
+                                Name
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="profileMenuLink">
+                                <a class="dropdown-item" href="/profile">Profile</a>
+                                <a class="dropdown-item" href="/edit">Edit</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-        </li>
-    </ul>
+            </header>
+        </div>
+        <div class="col-2"></div>
+    </div>
 </th:block>
 <th:block th:fragment="navbarNotLogged">
-    <ul class="nav nav-tabs bg-dark ">
-        <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Messages</a>
-        </li>
-        <li class="nav-item navbar-right ml-md-auto">
-            <li><a class="nav-link bg-warning border-right-1" href="/signup"><i class="fas fa-user-plus"></i> Sign Up</a></li>
-            <li><a class="nav-link bg-warning" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-        </li>
-    </ul>
+    <div class="container-fluid pt-0 h-100 px-0 pb-3 mx-auto flex-column">
+        <div class="row navbar-background-color py-3">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <header class="masthead  mb-auto w-100 navbar-background-color">
+                    <div class="inner">
+                        <h3 class="masthead-brand"><a class="nav-link active" href="/">Phillab</a></h3>
+                        <nav class="nav nav-masthead justify-content-center px-3">
+                            <a class="nav-link active" href="/aboutus">About Us</a>
+                            <a class="nav-link active" href="/signup">Register</a>
+                            <a class="nav-link active" href="/login">Login</a>
+                        </nav>
+                    </div>
+                </header>
+            </div>
+            <div class="col-3"></div>
+        </div>
 </th:block>
