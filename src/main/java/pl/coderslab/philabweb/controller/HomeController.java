@@ -2,9 +2,11 @@ package pl.coderslab.philabweb.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import pl.coderslab.philabweb.service.UserService;
 
 @Controller
+@SessionAttributes("user")
 public class HomeController {
     UserService userService;
 
@@ -24,16 +26,6 @@ public class HomeController {
 
     @GetMapping("/login")
     public String loginIntoApp() {
-//        for (int i = 0; i < 1; i++) {
-//            if (i % 3 == 0) {
-//            }
-//        }
         return "home/login";
-    }
-
-    @GetMapping("/signup")
-    public String registerIntoApp() {
-        //todo implement post method adding user into database
-        return "home/register";
     }
 }

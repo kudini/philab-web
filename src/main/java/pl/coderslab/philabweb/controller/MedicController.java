@@ -1,5 +1,6 @@
 package pl.coderslab.philabweb.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +12,15 @@ import pl.coderslab.philabweb.service.UserService;
 
 @Controller
 public class MedicController {
+    @Autowired
     PatientCardService patientCardService;
+    @Autowired
     UserService userService;
 
-    public MedicController(PatientCardService patientCardService, UserService userService) {
-        this.patientCardService = patientCardService;
-        this.userService = userService;
-    }
+//    public MedicController(PatientCardService patientCardService, UserService userService) {
+//        this.patientCardService = patientCardService;
+//        this.userService = userService;
+//    }
 
 
     @GetMapping("/medic/{medicId}/patients")
