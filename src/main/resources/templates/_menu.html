@@ -36,13 +36,13 @@
                         <a class="nav-link active" href="/aboutus">About Us</a>
                         <div class="dropdown show">
                             <a class="nav-link active dropdown-toggle mx-3" href="/profile" role="button" id="profileMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${#authentication.name}">
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${session.user.retrieveFullName()}">
                                 Name
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="profileMenuLink">
-                                <a class="dropdown-item" href="/profile">Profile</a>
-                                <a class="dropdown-item" href="/edit">Edit</a>
+                                <a class="dropdown-item" href="/user/myprofile">Profile</a>
+                                <a class="dropdown-item" href="/user/edit">Edit</a>
                                 <a class="dropdown-item" href="/logout">Logout</a>
                             </div>
                         </div>

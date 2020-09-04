@@ -40,6 +40,9 @@ public class UserServiceImpl implements UserService{
         public User findUserbyId(Long id){
         return userRepository.findById(id).orElse(null);
     }
+    public User findUserByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

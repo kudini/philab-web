@@ -7,6 +7,8 @@ public interface UserService extends UserDetailsService {
     User save(UserRegistrationDto registrationDto);
 
     User findUserbyId(Long medicId);
+
+    User findUserByEmail(String name);
 }
 
 //    private final UserRepository userRepository;

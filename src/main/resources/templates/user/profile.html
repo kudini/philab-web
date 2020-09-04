@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Phillab Site">
+    <meta name="author" content="Jerzy Pałka">
+    <title>PhilLab</title>
+    <!-- Bootstrap and core site CSS -->
+    <th:block th:include="_other :: stylesDev"/>
+</head>
+<body>
+
+<div class="container-fluid pt-0 h-100 px-3 pb-3 mx-auto flex-column">
+    <th:block th:include="_menu :: navbarLogged"/>
+
+    <div class="row w-100">
+
+        <div class="col-md-12 col-md-offset-3 d-flex justify-content-center">
+
+            <div class="col-6" th:object="${user}">
+                <table class="table bg-dark-gray table-hover table-dark">
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <img th:src="@{/resources/static/images/Picture.png}" />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Name:
+                        </td>
+                        <td>
+                            <span th:text="*{firstName}">Sebastian</span>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Surname:
+                        </td>
+                        <td>
+                            <span th:text="*{lastName}">Pepper</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Born:
+                        </td>
+                        <td>
+                            <span th:text="${user.getBirthDate()} ?: 'Not Known'">1996</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email:
+                        </td>
+                        <td>
+                            <span th:text="${user.getEmail()} ?: 'Not Known'">1996</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:include="_other :: pluginsDev"/>
+</body>
+</html>
