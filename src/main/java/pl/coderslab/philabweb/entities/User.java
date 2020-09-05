@@ -45,10 +45,10 @@ public class User {
 
     private Collection<Role> roles;
 
-    //    private int genderId;
-//    private String placeOfResidence;
+    private int genderId;
+    private String placeOfResidence;
 //    @PESEL
-//    private long pesel;
+    private long pesel;
     private Date dateCreated;
 
     public User() {
@@ -63,55 +63,6 @@ public class User {
         this.password = password;
         this.roles = roles;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -119,9 +70,17 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", userDetails=" + retrieveFullName() +
+                ", ROLES=" + getRoles() +
                 '}';
     }
-
+    @Transient
+    public boolean isMedic(){
+        if (this.roles.stream().map(Role::getName).anyMatch(rol -> rol.equals("ROLE_MEDIC"))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public String retrieveFullName() {
         return firstName + " " + lastName;
     }

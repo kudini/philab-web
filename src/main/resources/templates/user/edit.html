@@ -14,7 +14,7 @@
 
 	<!-- Create HTML registration form -->
 	<div class="container-fluid pt-0 h-100 px-3 pb-3 mx-auto flex-column">
-<th:block th:include="_menu :: navbarNotLogged"/>
+<th:block th:include="_menu :: navbarLogged"/>
 
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
@@ -27,16 +27,21 @@
 
 				<h1>Edit Profile Info</h1>
 
-				<form th:action="@{/edit}" method="post" th:object="${user}">
+				<form th:action="@{/user/edit}" method="post" th:object="${user}">
+					<div class="form-group hide">
+						<label class="control-label" for="firstName"> First Name </label>
+						<input id="id" class="form-control" th:field="*{id}"
+							required autofocus="autofocus" />
+					</div>
 					<div class="form-group">
 						<label class="control-label" for="firstName"> First Name </label>
-						<input id="firstName" class="form-control" th:field="*{session.user.firstName}"
+						<input id="firstName" class="form-control" th:field="*{firstName}"
 							required autofocus="autofocus" />
 					</div>
 
 					<div class="form-group">
 						<label class="control-label" for="lastName"> Last Name </label> <input
-							id="lastName" class="form-control" th:field="*{session.user.lastName}"
+							id="lastName" class="form-control" th:field="*{lastName}"
 							required autofocus="autofocus" />
 					</div>
 
