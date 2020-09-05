@@ -1,26 +1,28 @@
 package pl.coderslab.philabweb.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.philabweb.service.PatientCardService;
 import pl.coderslab.philabweb.service.UserService;
 
 @Controller
-public class PatientCardController {
+public class PatientController {
     PatientCardService patientCardService;
     UserService userService;
 
-    public PatientCardController(PatientCardService patientCardService, UserService userService) {
+    public PatientController(PatientCardService patientCardService, UserService userService) {
         this.patientCardService = patientCardService;
         this.userService = userService;
     }
 
-    @GetMapping("/all/patient-card/{userId}")
-    @ResponseBody //todo zaedytowac to zeby przekazywalo model do sesji
-    public String findAllPatientCard(@PathVariable Long userId){
-       return patientCardService.findAllPatientCardsByHealthProfessionUser(userService.findUserbyId(userId)).toString();
+    @GetMapping("/patient/{userId}/cards")
+    @ResponseBody //stworzyc widok
+    public String findAllPatientCard(@PathVariable Long userId, Model model){
+        model.addAttribute("patientCards",patientCardService.findAllPatientCardsByHealthProfessionUser(userService.findUserbyId(userId)));
+       return "view";
     }
-
-    }
+}

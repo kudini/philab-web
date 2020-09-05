@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Phillab Site">
+    <meta name="author" content="Jerzy Pałka">
+    <title>PhilLab</title>
+    <!-- Bootstrap and core site CSS -->
+    <th:block th:include="_other :: stylesDev" />
+
+    <!-- Custom styles for this template -->
+</head>
+<span class="w-100" th:if="${#authentication.name=='anonymousUser'}"><th:block th:include="_logged :: notLoggedIndex" /></span>
+<span class="w-100" th:unless="${#authentication.name=='anonymousUser'}"><th:block th:include="_logged :: loggedIndex" /></span>
+</html>

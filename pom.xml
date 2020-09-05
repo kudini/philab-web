@@ -15,7 +15,7 @@
     <description>Organizer project for physiotherapist in Poland</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
@@ -26,6 +26,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring5</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,6 +47,11 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.17.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.21</version>
         </dependency>
         <!--addPeople swagger ?-->
         <dependency>
@@ -84,6 +97,11 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
@@ -95,10 +113,59 @@
     </dependencies>
 
     <build>
+        <!--        <plugins>-->
+        <!--            <plugin>-->
+        <!--                <groupId>org.springframework.boot</groupId>-->
+        <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+        <!--            </plugin>-->
+        <!--        </plugins>-->
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
+            </plugin>
+<!--            <plugin>-->
+<!--                &lt;!&ndash; Build an executable JAR &ndash;&gt;-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>3.2.0</version>-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        <manifest>-->
+<!--                            <addClasspath>true</addClasspath>-->
+<!--                            <classpathPrefix>lib/</classpathPrefix>-->
+<!--                            <mainClass>pl.coderslab.philabweb.PhilabWebApplication</mainClass>-->
+<!--                        </manifest>-->
+<!--                    </archive>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+
+<!--        </plugins>-->
+<!--        <plugins>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.3</version>
+                <configuration>
+                    <appName>testphilab</appName>
+                    <includeTarget>false</includeTarget>
+                    <includes>
+                        <include>${project.build.directory}/${project.build.finalName}.jar</include>
+                    </includes>
+                    <jdkVersion>${java.version}</jdkVersion>
+                    <processTypes>
+                        <web>java $JAVA_OPTS -jar ${project.build.directory}/${project.build.finalName}.jar</web>
+                    </processTypes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

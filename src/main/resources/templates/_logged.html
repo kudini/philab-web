@@ -1,0 +1,94 @@
+<th:block th:fragment="notLoggedIndex">
+<body class="text-center background-cover">
+<div class="col-3"></div>
+<div class="cover-container d-flex h-100 col-8 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand"><a class="nav-link active" href="/">Phillab</a></h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="/contact">Contact Us</a>
+                <a class="nav-link active" href="/aboutus">About Us</a>
+                <a class="nav-link active" href="/registration">Register</a>
+                <a class="nav-link active" href="/login">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading">PhilLab - think about your future.</h1>
+        <p class="lead text-gray-dark">If you are loking for some way to meet KIF expectations about online documentation this might be it.</p>
+        <p class="lead">
+            <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+        </p>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Site created using <a href="https://getbootstrap.com/">Bootstrap</a>, by <a
+                    href="#">Jerzy Pałka</a>.</p>
+        </div>
+    </footer>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<th:block th:include="_other :: pluginsDev" />
+
+</body>
+</th:block>
+<th:block th:fragment="loggedIndex">
+    <body>
+
+    <div class="container-fluid pt-0 h-100 px-3 pb-3 mx-auto flex-column">
+
+        <th:block th:include="_menu :: navbarLogged"/>
+
+        <!-- todo zamiast jumbotronu karuzela-->
+
+        <div class="row pt-lg-4 pb-2">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="jumbotron-background jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">PhilLab</h1>
+                        <p class="lead">You can find everything you need.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+
+        </div>
+        <main class="row ">
+            <div class="col-2">
+            </div>
+            <div class="col-8">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Date and Time</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="card: ${patientList}">
+
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-2">
+            </div>
+        </main>
+
+    <th:block th:include="_other :: pluginsDev" />
+
+    </body>
+</th:block>

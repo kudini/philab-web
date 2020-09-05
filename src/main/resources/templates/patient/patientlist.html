@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Phillab Site">
+    <meta name="author" content="Jerzy Pałka">
+    <title>PhilLab</title>
+    <!-- Bootstrap and core site CSS -->
+    <th:block th:include="_other :: stylesDev"/>
+</head>
+<body>
+
+<div class="container-fluid pt-0 h-100 px-3 pb-3 mx-auto flex-column">
+    <th:block th:include="_menu :: navbarLogged"/>
+    <div class="row pt-lg-4 pb-2">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="jumbotron-background jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">PhilLab</h1>
+                    <p class="lead">You can find everything you need.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+
+    </div>
+    <main class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Date and Time</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="card: ${patientList}">
+                    <th scope="row" th:text="${card.getId()}"/>
+                    <td th:text="${card.patient.retrieveFullName()}"/>
+                    <td>
+                        <span th:text="*{card.getDateOfVisit()}?: '(No Date)'">20-02-2020</span>
+                    </td>
+                    <td>
+                        <a th:href="@{/medic/}+${card.getId()}+@{/edit}">Edit</a>
+                        <a th:href="@{/medic/}+${card.getId()}+@{/delete}">Delete</a>
+                        <a th:href="@{/medic/}+${card.getId()}+@{/add}">Add Medic</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2">
+        </div>
+    </main>
+</div>
+<th:block th:include="_other :: pluginsDev"/>
+</body>
+</html>

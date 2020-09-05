@@ -8,3 +8,17 @@
     margin-left:auto;
     margin-right:auto;
 }
+.background-cover{
+    background: url("https://thumbs.dreamstime.com/z/starszy-m%C4%99%C5%BCczyzna-po-udarze-w-domu-opieki-%C4%87wicz%C4%85cy-z-profesjonalnym-fizjoterapeut%C4%85-starsi-m%C4%99%C5%BCczy%C5%BAni-154024550.jpg");
+    background-position: center;
+}
+.jumbotron-background{
+    background: url("https://thumbs.dreamstime.com/z/fizjoterapeuta-m%C4%99ski-%C4%87wiczy-z-rann%C4%85-kobiet%C4%85-na-pod%C5%82odze-rannymi-kobietami-165436560.jpg");
+    background-position: center;
+    background-size: cover;
+
+}
+.navbar-background-color{
+    background: #404041;
+}
+

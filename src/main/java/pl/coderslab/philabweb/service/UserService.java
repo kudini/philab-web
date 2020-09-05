@@ -1,17 +1,23 @@
 package pl.coderslab.philabweb.service;
 
-import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import pl.coderslab.philabweb.entities.User;
-import pl.coderslab.philabweb.repositories.UserRepository;
-@Service
-public class UserService {
-    private final UserRepository userRepository;
+import pl.coderslab.philabweb.dto.UserRegistrationDto;
+public interface UserService extends UserDetailsService {
+    User save(UserRegistrationDto registrationDto);
 
+    User findUserbyId(Long medicId);
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-    public User findUserbyId(Long id){
-        return userRepository.findById(id).orElse(null);
-    }
+    User findUserByEmail(String name);
 }
+
+//    private final UserRepository userRepository;
+//
+//
+//    public UserService(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
+//    public User findUserbyId(Long id){
+//        return userRepository.findById(id).orElse(null);
+//    }
+
