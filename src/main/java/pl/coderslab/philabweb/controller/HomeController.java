@@ -63,9 +63,12 @@ public class HomeController {
     @GetMapping("/contact")
     public String contact(Model model) {
         DynamicMessage message = dynamicMessageService.findOneByName("contact");
-        if (message.getMessages().size() != 0) {
-            model.addAttribute("message", message.getMessages().get(0));
-        } else {
+        if(message!=null){
+            if (message.getMessages().size() != 0) {
+                model.addAttribute("message", message.getMessages().get(0));
+            }
+        }
+        else {
             model.addAttribute("message", "No message in database");
         }
 
