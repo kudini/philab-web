@@ -9,15 +9,7 @@ public interface UserService extends UserDetailsService {
     User findUserbyId(Long medicId);
 
     User findUserByEmail(String name);
-}
 
-//    private final UserRepository userRepository;
-//
-//
-//    public UserService(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
-//    public User findUserbyId(Long id){
-//        return userRepository.findById(id).orElse(null);
-//    }
+    User edit(UserRegistrationDto registrationDto);
+}
 

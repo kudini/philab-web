@@ -31,14 +31,14 @@ public class UserController {
 
     @GetMapping("/edit")
     public String showEditForm(Model model, Principal principal) {
-        model.addAttribute("user",userService.findUserByEmail(principal.getName()));
+        model.addAttribute("userDTO",UserRegistrationDto.userToUserDTO(userService.findUserByEmail(principal.getName())));
         return "user/edit";
     }
 
     @PostMapping("/edit")
-    public String editUserAccount(@ModelAttribute("user")Model model, UserRegistrationDto registrationDto) {
-        userService.save(registrationDto);
+    public String editUserAccount(Model model, UserRegistrationDto registrationDto) {
+        userService.edit(registrationDto);
         model.addAttribute("user",userService.findUserbyId(registrationDto.getId()));
-        return "redirect:/profile?success";
+        return "redirect:/user/profile?success";
     }
 }

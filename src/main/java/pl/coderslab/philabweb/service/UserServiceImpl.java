@@ -18,13 +18,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService{
-    private RoleService roleService;
+    private RoleServiceImpl roleService;
     private UserRepository userRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository,RoleService roleService) {
+    public UserServiceImpl(UserRepository userRepository, RoleServiceImpl roleService) {
         super();
         this.roleService = roleService;
         this.userRepository = userRepository;
@@ -40,11 +40,8 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(user);
     }
     public User edit(UserRegistrationDto registrationDto) {
-        User user = new User(registrationDto.getFirstName(),
-                registrationDto.getLastName(), registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()),
-                Arrays.asList(roleService.findByName("ROLE_USER").get()));
-//todo enum do roli
+        User user = userRepository.findById(registrationDto.getId()).get();
+        user.UserDTOToUser(registrationDto);
         return userRepository.save(user);
     }
         public User findUserbyId(Long id){

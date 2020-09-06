@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import pl.coderslab.philabweb.entities.DateAndTime;
 import pl.coderslab.philabweb.entities.DynamicMessage;
 import pl.coderslab.philabweb.entities.Message;
 import pl.coderslab.philabweb.service.DynamicMessageService;
@@ -14,12 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes({"user", "date_time"})
 public class HomeController {
     private UserService userService;
     private DynamicMessageService dynamicMessageService;
+    private DateAndTime dateAndTime = new DateAndTime();
 
-    public HomeController(UserService userService,DynamicMessageService dynamicMessageService) {
+    public HomeController(UserService userService, DynamicMessageService dynamicMessageService) {
         this.dynamicMessageService = dynamicMessageService;
         this.userService = userService;
     }
@@ -28,6 +30,7 @@ public class HomeController {
     public String indexPage(Model model, Principal principal) {
         if (principal != null) {
             model.addAttribute("user", userService.findUserByEmail(principal.getName()));
+            model.addAttribute("date_time", dateAndTime);
         }
         return "home/index";
     }
@@ -39,9 +42,9 @@ public class HomeController {
         if (message != null) {
             messageList = message.getMessages();
             if (messageList.size() != 0) {
-                    while (messageList.size() < 3) {
-                        messageList.add(Message.builder().id(0L).message("").build());
-                    }
+                while (messageList.size() < 3) {
+                    messageList.add(Message.builder().id(0L).message("").build());
+                }
             } else {
                 while (messageList.size() != 3) {
                     messageList.add(Message.builder().id(0L).message("").build());

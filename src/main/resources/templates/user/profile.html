@@ -18,9 +18,17 @@
     <div class="row w-100">
 
         <div class="col-md-12 col-md-offset-3 d-flex justify-content-center">
+            <!-- success message -->
 
             <div class="col-6" th:object="${user}">
                 <table class="table bg-dark-gray table-hover table-dark">
+                    <div th:if="${param.success}">
+                        <tr>
+                            <div class="alert alert-info">You've successfully edited
+                                to your Profile!
+                            </div>
+                        </tr>
+                    </div>
                     <tr>
                         <td>
 

@@ -1,24 +1,28 @@
 <th:block th:fragment="navbarLogged">
     <div class="row py-3 navbar-background-color">
-        <div class="col-2"></div>
+        <div class="col-2">
+            <div th:unless="${session.date_time=='null'}" th:text="${session.date_time.getActualDateAndTime()}">
+            </div>
+        </div>
         <div class="col-8">
             <header class="masthead  mb-auto w-100 navbar-background-color">
                 <div class="inner">
                     <h3 class="masthead-brand"><a class="nav-link active" href="/">Phillab</a></h3>
                     <nav class="nav nav-masthead justify-content-center px-3">
-                        <!--todo medyk ma sie pojawiac tylko jak posiada role medic pozatym zmienic na dynamicznie generowane id tymczasowo na sztywno-->
                         <span th:if="${session.user.isMedic()==true}">
                         <div class="dropdown show">
                             <a class="nav-link active dropdown-toggle mx-3" href="/medic" role="button"
                                id="medicMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Medic
+                                Physiotherapist/D.O
                             </a>
                             <div class="dropdown-menu" aria-labelledby="medicMenuLink">
-                                <a class="dropdown-item" href="/medic/patient/add">Add Patient</a>
+                                <a class="dropdown-item" href="/medic/patient/add">Add New Patient</a>//
                                 <a class="dropdown-item" th:href="@{|/medic/${session.user.getId()}/patients|}">My Patients</a>
-                                <a class="dropdown-item" href="/medic/patient/card/add">New Card</a>
+                                <a class="dropdown-item" href="/medic/patient/card/add">New Visit</a>
+                                <a class="dropdown-item" href="/medic/patient/card/add">Plan a Visit</a>
                                 <a class="dropdown-item" href="/medic/patient/card/list">All Visits</a>
+                                <a class="dropdown-item" href="/medic/patient/card/list">History</a>
                             </div>
                         </div>
                         </span>
@@ -32,6 +36,7 @@
                             <div class="dropdown-menu" aria-labelledby="visitMenuLink">
                                 <a class="dropdown-item" href="/add">Reservation</a>
                                 <a class="dropdown-item" href="/visits">Scheduled</a>
+                                <a class="dropdown-item" href="/#">Medical Training</a>
                                 <a class="dropdown-item"
                                    th:href="@{|/patient/${session.user.getId()}/history|}">History</a>
                             </div>
@@ -40,7 +45,7 @@
                         <a class="nav-link active" href="/contact">Contact Us</a>
                         <a class="nav-link active" href="/aboutus">About Us</a>
                         <div class="dropdown show">
-                            <a class="nav-link active dropdown-toggle mx-3" href="/profile" role="button"
+                            <a class="nav-link active dropdown-toggle mx-3" href="" role="button"
                                id="profileMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                th:text="${session.user.retrieveFullName()}">
@@ -63,7 +68,8 @@
 <th:block th:fragment="navbarNotLogged">
     <div class="container-fluid pt-0 h-100 px-0 pb-3 mx-auto flex-column">
         <div class="row navbar-background-color py-3">
-            <div class="col-3"></div>
+            <div class="col-3" >
+            </div>
             <div class="col-6">
                 <header class="masthead  mb-auto w-100 navbar-background-color">
                     <div class="inner">

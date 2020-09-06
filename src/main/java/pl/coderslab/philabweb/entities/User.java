@@ -2,6 +2,7 @@ package pl.coderslab.philabweb.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.coderslab.philabweb.dto.UserRegistrationDto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -83,5 +84,11 @@ public class User {
     }
     public String retrieveFullName() {
         return firstName + " " + lastName;
+    }
+    public void UserDTOToUser(UserRegistrationDto userRegistrationDto){
+        this.firstName=userRegistrationDto.getFirstName();
+        this.lastName=userRegistrationDto.getLastName();
+        this.email=userRegistrationDto.getEmail();
+        this.password=userRegistrationDto.getPassword();
     }
 }
