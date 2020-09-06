@@ -7,6 +7,7 @@ import pl.coderslab.philabweb.entities.User;
 import pl.coderslab.philabweb.repositories.PatientCardRepository;
 
 import java.util.List;
+
 @Service
 @Transactional
 public class PatientCardService {
@@ -15,18 +16,24 @@ public class PatientCardService {
     public PatientCardService(PatientCardRepository patientCardRepository) {
         this.patientCardRepository = patientCardRepository;
     }
-    public PatientCard findCardById(long cardId){
+
+    public PatientCard findCardById(long cardId) {
         return patientCardRepository.findById(cardId).orElse(null);
     }
-    public List<PatientCard> findAllPatientCardsByPatient(User patient){
+
+    public List<PatientCard> findAllPatientCardsByPatient(User patient) {
         return patientCardRepository.findAllByPatient(patient);
     }
-    public List<PatientCard> findAllPatientCardsByHealthProfessionUser(User user){
+
+    public List<PatientCard> findAllPatientCardsByHealthProfessionUser(User user) {
         return patientCardRepository.findAllByInvolvedPeopleIsContaining(user);
     }
-    public void updatePatientCardInDatabase(PatientCard patientCard){
-        patientCardRepository.updateUserSetStatusForName(patientCard,patientCard.getId());
-    }    public void createPatientCardInDatabase(PatientCard patientCard){
+
+    public void updatePatientCardInDatabase(PatientCard patientCard) {
+        patientCardRepository.save(patientCard);
+    }
+
+    public void createPatientCardInDatabase(PatientCard patientCard) {
         patientCardRepository.save(patientCard);
     }
 }

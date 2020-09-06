@@ -1,11 +1,9 @@
 package pl.coderslab.philabweb.entities;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,16 +12,16 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 public class PatientCard {
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
     private final List<User> involvedPeople = new ArrayList<>();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private User patient;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private MedicalInterview medicalInterview;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private MedicalOperations medicalOperations;
 
     public PatientCard(User patient) {

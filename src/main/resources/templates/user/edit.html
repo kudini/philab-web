@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Registration</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-	<th:block th:include="_other :: stylesDev" />
+    <meta charset="ISO-8859-1">
+    <title>PhilLab</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <th:block th:include="_other :: stylesDev"/>
 
 </head>
 <body>
 
-	<!-- Create HTML registration form -->
-	<div class="container-fluid pt-0 h-100 px-3 pb-3 mx-auto flex-column">
-<th:block th:include="_menu :: navbarNotLogged"/>
+<!-- Create HTML registration form -->
+<div class="container-fluid pt-0 h-100 px-3 pb-3 mx-auto flex-column">
+    <th:block th:include="_menu :: navbarLogged"/>
 
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
 
-				<!-- success message -->
-				<div th:if="${param.success}">
-					<div class="alert alert-info">You've successfully registered
-						to our awesome app!</div>
-				</div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
 
-				<h1>Edit Profile Info</h1>
 
-				<form th:action="@{/edit}" method="post" th:object="${user}">
-					<div class="form-group">
-						<label class="control-label" for="firstName"> First Name </label>
-						<input id="firstName" class="form-control" th:field="*{session.user.firstName}"
-							required autofocus="autofocus" />
-					</div>
 
-					<div class="form-group">
-						<label class="control-label" for="lastName"> Last Name </label> <input
-							id="lastName" class="form-control" th:field="*{session.user.lastName}"
-							required autofocus="autofocus" />
-					</div>
+            <h1>Edit Profile Info</h1>
 
-					<div class="form-group">
-						<label class="control-label" for="email"> Email </label> <input
-							id="email" class="form-control" th:field="*{email}" required
-							autofocus="autofocus" />
-					</div>
+            <form th:action="@{/user/edit}" method="post" th:object="${userDTO}">
+                <div class="form-group hide">
+                    <label class="control-label" for="firstName"> First Name </label>
+                    <input id="id" class="form-control" th:field="*{id}"
+                           required autofocus="autofocus"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="firstName"> First Name </label>
+                    <input id="firstName" class="form-control" th:field="*{firstName}"
+                           required autofocus="autofocus"/>
+                </div>
 
-					<div class="form-group">
-						<label class="control-label" for="password"> Password </label> <input
-							id="password" class="form-control" type="password"
-							th:field="*{password}" required autofocus="autofocus" />
-					</div>
+                <div class="form-group">
+                    <label class="control-label" for="lastName"> Last Name </label> <input
+                        id="lastName" class="form-control" th:field="*{lastName}"
+                        required autofocus="autofocus"/>
+                </div>
 
-					<div class="form-group">
-						<button type="submit" class="btn btn-success">Edit</button>
-<!--						<span>Already registered? <a href="/" th:href="@{/login}">Login-->
-<!--								here</a></span>-->
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                <div class="form-group">
+                    <label class="control-label" for="email"> Email </label> <input
+                        id="email" class="form-control" th:field="*{email}" required
+                        autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="password"> Password </label> <input
+                        id="password" class="form-control" type="password"
+                        th:field="*{password}" required autofocus="autofocus"/>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Edit</button>
+                    <!--						<span>Already registered? <a href="/" th:href="@{/login}">Login-->
+                    <!--								here</a></span>-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<th:block th:include="_other :: pluginsDev"/>
 </body>
 </html>

@@ -6,36 +6,45 @@
                 <div class="inner">
                     <h3 class="masthead-brand"><a class="nav-link active" href="/">Phillab</a></h3>
                     <nav class="nav nav-masthead justify-content-center px-3">
-<!--todo medyk ma sie pojawiac tylko jak posiada role medic pozatym zmienic na dynamicznie generowane id tymczasowo na sztywno-->
+                        <span th:if="${session.user.isMedic()==true}">
                         <div class="dropdown show">
-                            <a class="nav-link active dropdown-toggle mx-3" href="/medic" role="button" id="medicMenuLink"
+                            <a class="nav-link active dropdown-toggle mx-3" href="/medic" role="button"
+                               id="medicMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Medic
                             </a>
                             <div class="dropdown-menu" aria-labelledby="medicMenuLink">
-                                <a class="dropdown-item" href="/medic/patient/add">Add Patient</a>
+                                <a class="dropdown-item" href="/medic/add">Add Patient</a>
                                 <a class="dropdown-item" th:href="@{|/medic/${session.user.getId()}/patients|}">My Patients</a>
-                                <a class="dropdown-item" href="/medic/patient/card/add">New Card</a>
-                                <a class="dropdown-item" href="/medic/patient/card/list">All Visits</a>
+                                <a class="dropdown-item" href="/medic/card/add">New Card</a>
+                                <a class="dropdown-item" th:href="@{|/medic/${session.user.getId()}/cards|}">All Cards</a>
+                                <a class="dropdown-item" href="/medic/card/list">All Visits</a>
                             </div>
                         </div>
+                        </span>
                         <div class="dropdown show">
-                            <a class="nav-link active dropdown-toggle mx-3" href="/visits" role="button" id="visitMenuLink"
+                            <a class="nav-link active dropdown-toggle mx-3" href="/visits" role="button"
+                               id="visitMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Visits
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="visitMenuLink">
-                                <a class="dropdown-item" href="/add">Reservation</a>
-                                <a class="dropdown-item" href="/visits">Scheduled</a>
-                                <a class="dropdown-item" th:href="@{|/patient/${session.user.getId()}/history|}">History</a>
+                                <a class="dropdown-item" href="/patient/reservation">Reservation</a>
+                                <a class="dropdown-item" href="/patient/scheduled">Scheduled</a>
+                                <a class="dropdown-item" href="/patient/training">Medical Training</a>
+                                <a class="dropdown-item"
+                                   th:href="@{|/patient/${session.user.getId()}/history|}">History</a>
                             </div>
                         </div>
+
                         <a class="nav-link active" href="/contact">Contact Us</a>
                         <a class="nav-link active" href="/aboutus">About Us</a>
                         <div class="dropdown show">
-                            <a class="nav-link active dropdown-toggle mx-3" href="/profile" role="button" id="profileMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${session.user.retrieveFullName()}">
+                            <a class="nav-link active dropdown-toggle mx-3" href="" role="button"
+                               id="profileMenuLink"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                               th:text="${session.user.retrieveFullName()}">
                                 Name
                             </a>
 
