@@ -5,7 +5,6 @@ import lombok.Setter;
 import pl.coderslab.philabweb.dto.UserRegistrationDto;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -27,10 +26,10 @@ public class User {
 
     @Column(name = "last_name")
     private String lastName;
-    @NotEmpty
-    @Column(nullable = false, unique = true)
+//    @NotEmpty
+//    @Column(nullable = false, unique = true)
     private String email;
-    @NotEmpty
+//    @NotEmpty
     private String password;
 
     @Past

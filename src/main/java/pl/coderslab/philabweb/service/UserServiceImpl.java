@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService{
-    private RoleServiceImpl roleService;
+    private RoleService roleService;
     private UserRepository userRepository;
 
     @Autowired

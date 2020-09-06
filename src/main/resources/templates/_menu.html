@@ -1,9 +1,6 @@
 <th:block th:fragment="navbarLogged">
     <div class="row py-3 navbar-background-color">
-        <div class="col-2">
-            <div th:unless="${session.date_time=='null'}" th:text="${session.date_time.getActualDateAndTime()}">
-            </div>
-        </div>
+        <div class="col-2"></div>
         <div class="col-8">
             <header class="masthead  mb-auto w-100 navbar-background-color">
                 <div class="inner">
@@ -14,15 +11,13 @@
                             <a class="nav-link active dropdown-toggle mx-3" href="/medic" role="button"
                                id="medicMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Physiotherapist/D.O
+                                Medic
                             </a>
                             <div class="dropdown-menu" aria-labelledby="medicMenuLink">
-                                <a class="dropdown-item" href="/medic/patient/add">Add New Patient</a>//
+                                <a class="dropdown-item" href="/medic/patient/add">Add Patient</a>
                                 <a class="dropdown-item" th:href="@{|/medic/${session.user.getId()}/patients|}">My Patients</a>
-                                <a class="dropdown-item" href="/medic/patient/card/add">New Visit</a>
-                                <a class="dropdown-item" href="/medic/patient/card/add">Plan a Visit</a>
+                                <a class="dropdown-item" href="/medic/patient/card/add">New Card</a>
                                 <a class="dropdown-item" href="/medic/patient/card/list">All Visits</a>
-                                <a class="dropdown-item" href="/medic/patient/card/list">History</a>
                             </div>
                         </div>
                         </span>
@@ -68,8 +63,7 @@
 <th:block th:fragment="navbarNotLogged">
     <div class="container-fluid pt-0 h-100 px-0 pb-3 mx-auto flex-column">
         <div class="row navbar-background-color py-3">
-            <div class="col-3" >
-            </div>
+            <div class="col-3"></div>
             <div class="col-6">
                 <header class="masthead  mb-auto w-100 navbar-background-color">
                     <div class="inner">

@@ -1,26 +1,24 @@
 package pl.coderslab.philabweb.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.coderslab.philabweb.entities.PatientCard;
 import pl.coderslab.philabweb.service.PatientCardService;
 import pl.coderslab.philabweb.service.UserService;
 
 @Controller
 public class MedicController {
-    @Autowired
     PatientCardService patientCardService;
-    @Autowired
     UserService userService;
 
-//    public MedicController(PatientCardService patientCardService, UserService userService) {
-//        this.patientCardService = patientCardService;
-//        this.userService = userService;
-//    }
+    public MedicController(PatientCardService patientCardService, UserService userService) {
+        this.patientCardService = patientCardService;
+        this.userService = userService;
+    }
 
 
     @GetMapping("/medic/{medicId}/patients")
@@ -31,13 +29,15 @@ public class MedicController {
 
 
     @GetMapping("/medic/patient/card/add")
-    public String patientCardAddGet(){
+    public String patientCardAddGet(Model model){
+        model.addAttribute("patient_card", new PatientCard());
         return "medic/patientCardAdd";
     }
     @PostMapping("/medic/patient/card/add")
-    public String patientCardAddPost(){
-        return "medic/patientCardAdd";
-    }
+    public String patientCardAddPost(PatientCard patientCard) {
+            patientCardService.createPatientCardInDatabase(patientCard);
+            return "redirect:/?success";
+        }
 
 
     @GetMapping("/medic/patient/cards")

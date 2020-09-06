@@ -18,49 +18,49 @@
         <div class="col-2">
         </div>
         <div class="col-8">
-            <form>
+            <form th:action="@{/medic/patient/card/add}" method="post" th:object="${patient_card}">
                 <div class="form-row">
                     <div class="form-group col-md-3">
-                        <label for="inputDate">Date:</label>
-                        <input type="date" class="form-control" id="inputDate">
+                        <label for="medicalInterview.dateOfVisit">Date:</label>
+                        <input type="date" class="form-control" id="medicalInterview.dateOfVisit" th:field="*{medicalInterview.dateOfVisit}">
+                    </div>
+<!--                    <div class="form-group col-md-3">-->
+<!--                        <label for="medicalInterview.timeOfVisit">Time:</label>-->
+<!--                        <input type="time" class="form-control" id="medicalInterview.timeOfVisit"  th:field="*{medicalInterview.timeOfVisit}">-->
+<!--                    </div>-->
+                    <div class="form-group col-md-3">
+                        <label for="patient.firstName">First Name:</label>
+                        <input type="text" class="form-control" id="patient.firstName" th:field="*{patient.firstName}">
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="inputTime">Time:</label>
-                        <input type="time" class="form-control" id="inputTime">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputFirst">First Name:</label>
-                        <input type="text" class="form-control" id="inputFirst">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputLast">Last Name:</label>
-                        <input type="text" class="form-control" id="inputLast">
+                        <label for="patient.lastName">Last Name:</label>
+                        <input type="text" class="form-control" id="patient.lastName" th:field="*{patient.lastName}">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-8">
-                        <label for="inputCharOfTheAilment">Character of the ailment:</label>
-                        <input type="text" class="form-control" id="inputCharOfTheAilment" placeholder="1234 Main St">
+                        <label for="medicalInterview.characterOfTheAilment">Character of the ailment:</label>
+                        <input type="text" class="form-control" id="medicalInterview.characterOfTheAilment" placeholder="" th:field="*{medicalInterview.characterOfTheAilment}">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputPesel">Pesel:</label>
-                        <input type="text" class="form-control" id="inputPesel" minlength="11" maxlength="11" placeholder="22010301000">
-                    </div>
+<!--                    <div class="form-group col-md-4">-->
+<!--                        <label for="inputPesel">Pesel:</label>-->
+<!--                        <input type="text" class="form-control" id="pesel" minlength="11" maxlength="11" placeholder="22010301000" th:field="*{pesel}">-->
+<!--                    </div>-->
                 </div>
 
                 <div class="form-group">
-                    <label for="inputLocalization">Localization of pain:</label>
-                    <input type="text" class="form-control" id="inputLocalization"
-                           placeholder="Apartment, studio, or floor">
+                    <label for="medicalInterview.localizationOfPain">Localization of pain:</label>
+                    <input type="text" class="form-control" id="medicalInterview.localizationOfPain"
+                           placeholder="" th:field="*{medicalInterview.localizationOfPain}">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputPain">Strength of pain:</label>
-                        <input type="text" class="form-control" id="inputPain">
+                        <label for="medicalInterview.strenghtOfPain">Strength of pain:</label>
+                        <input type="text" class="form-control" id="medicalInterview.strenghtOfPain" th:field="*{medicalInterview.strengthOfPain}">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputDeformations">Deformations of body:</label>
-                        <input type="text" class="form-control" id="inputDeformations">
+                        <label for="medicalInterview.deformationsOfBody">Deformations of body:</label>
+                        <input type="text" class="form-control" id="medicalInterview.deformationsOfBody" th:field="*{medicalInterview.deformationsOfBody}">
 
                     </div>
                 </div>
