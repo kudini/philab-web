@@ -43,17 +43,17 @@ public class HomeController {
             messageList = message.getMessages();
             if (messageList.size() != 0) {
                 while (messageList.size() < 3) {
-                    messageList.add(Message.builder().id(0L).message("").build());
+                    messageList.add(Message.builder().id(0L).message("No message in database").build());
                 }
             } else {
                 while (messageList.size() != 3) {
-                    messageList.add(Message.builder().id(0L).message("").build());
+                    messageList.add(Message.builder().id(0L).message("No message in database").build());
                 }
             }
         } else {
             messageList = new ArrayList<>();
             while (messageList.size() != 3) {
-                messageList.add(Message.builder().id(0L).message("").build());
+                messageList.add(Message.builder().id(0L).message("No message in database").build());
             }
         }
         model.addAttribute("messages", messageList);

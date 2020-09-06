@@ -14,10 +14,11 @@
                                 Medic
                             </a>
                             <div class="dropdown-menu" aria-labelledby="medicMenuLink">
-                                <a class="dropdown-item" href="/medic/patient/add">Add Patient</a>
+                                <a class="dropdown-item" href="/medic/add">Add Patient</a>
                                 <a class="dropdown-item" th:href="@{|/medic/${session.user.getId()}/patients|}">My Patients</a>
-                                <a class="dropdown-item" href="/medic/patient/card/add">New Card</a>
-                                <a class="dropdown-item" href="/medic/patient/card/list">All Visits</a>
+                                <a class="dropdown-item" href="/medic/card/add">New Card</a>
+                                <a class="dropdown-item" th:href="@{|/medic/${session.user.getId()}/cards|}">All Cards</a>
+                                <a class="dropdown-item" href="/medic/card/list">All Visits</a>
                             </div>
                         </div>
                         </span>
@@ -29,11 +30,11 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="visitMenuLink">
-                                <a class="dropdown-item" href="/add">Reservation</a>
-                                <a class="dropdown-item" href="/visits">Scheduled</a>
-                                <a class="dropdown-item" href="/#">Medical Training</a>
+                                <a class="dropdown-item" href="/patient/reservation">Reservation</a>
+                                <a class="dropdown-item" href="/patient/scheduled">Scheduled</a>
+                                <a class="dropdown-item" href="/patient/training">Medical Training</a>
                                 <a class="dropdown-item"
-                                   th:href="@{|/patient/${session.user.getId()}/cards|}">History</a>
+                                   th:href="@{|/patient/${session.user.getId()}/history|}">History</a>
                             </div>
                         </div>
 

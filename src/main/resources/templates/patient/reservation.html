@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Phillab Site">
+    <meta name="author" content="Jerzy Pałka">
+    <title>PhilLab</title>
+    <!-- Bootstrap and core site CSS -->
+    <th:block th:include="_other :: stylesDev"/>
+</head>
+<body>
+
+<div class="container-fluid pt-0 h-100 px-3 pb-3 mx-auto flex-column">
+    <th:block th:include="_menu :: navbarLogged"/>
+    <main class="row ">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+            <form th:action="@{/patient/reservation}" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="date">Date:</label>
+                        <input type="date" class="form-control" id="date">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="time">Time:</label>
+                        <input type="time" class="form-control" id="time">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="characterofvisit">Character of the ailment:</label>
+                        <input type="text" class="form-control" id="characterofvisit" placeholder="eg. Consultation"
+                               >
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Add Card</button>
+            </form>
+        </div>
+        <div class="col-2">
+        </div>
+    </main>
+</div>
+<th:block th:include="_other :: pluginsDev"/>
+</body>
+</html>
